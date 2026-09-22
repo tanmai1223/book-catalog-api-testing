@@ -1,0 +1,2415 @@
+{
+  "info": {
+    "_postman_id": "5adf1a3d-6de8-4a5d-b7ce-6357c75ced58",
+    "name": "Book Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46443195"
+  },
+  "item": [
+    {
+      "name": "User Register Testing",
+      "item": [
+        {
+          "name": "User Register - Negative Testing(Name)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Name field validation is triggered\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.field).to.eql(\"name\");\r\n});\r\n\r\npm.test(\"Correct name validation message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Name must be at least 3 characters long.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "user10",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "user101@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "User10@123",
+                  "type": "text"
+                },
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Register - Negative Testing(User Exists)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 409\", function () {\r\n    pm.response.to.have.status(409);\r\n});\r\n\r\npm.test(\"Correct name validation message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"User with this email already exists.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "user10",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "user101@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "User10@123",
+                  "type": "text"
+                },
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Register - Negative Testing(Email)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Email field validation is triggered\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.field).to.eql(\"email\");\r\n});\r\n\r\npm.test(\"Correct email validation message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Please provide a valid email address.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "user10",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "user101@example",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "User10@123",
+                  "type": "text"
+                },
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Register - Negative Testing(Password)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Password field validation is triggered\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.field).to.eql(\"password\");\r\n});\r\n\r\npm.test(\"Correct password validation message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Password must be at least 8 characters long, include uppercase, lowercase, number, and special character.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "user10",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "user101@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "User10@",
+                  "type": "text"
+                },
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Register - Negative Testing(ProfileImage)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Profile Image field validation is triggered\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.field).to.eql(\"profileImage\");\r\n});\r\n\r\npm.test(\"Correct profileImage validation message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Please provide a profile image.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "user10",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "user101@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "User10@123",
+                  "type": "text"
+                },
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+                  ],
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Register - Sucess",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\",function(){\r\n    pm.response.to.have.status(201);\r\n})\r\npm.test(\"Response containes user ID\",function(){\r\n    const res=pm.response.json();\r\n    pm.expect(res.user).to.have.property(\"_id\");\r\n})\r\npm.test(\"Response contains user name\",function(){\r\n    const res=pm.response.json();\r\n    pm.expect(res.user).to.have.property(\"name\");\r\n})\r\npm.test(\"Response contains valid email\",function(){\r\n    const res=pm.response.json();\r\n     pm.expect(res.user.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r\n})\r\npm.test(\"Response contains success message\", function () {\r\n    const res = pm.response.json();\r\n    pm.expect(res).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response time is acceptable\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(10000);\r\n});\r\n\r\npm.test(\"Response is JSON\", function () {\r\n    pm.expect(pm.response.headers.get(\"Content-Type\"))\r\n        .to.include(\"application/json\");\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "user10",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "usha@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "User10@123",
+                  "type": "text"
+                },
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Login Testing",
+      "item": [
+        {
+          "name": "Valid Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\",function(){\r\n    pm.response.to.have.status(200);\r\n})\r\npm.test(\"Response containes user ID\",function(){\r\n    const res=pm.response.json();\r\n    pm.expect(res.user).to.have.property(\"_id\");\r\n})\r\n\r\npm.test(\"Response contains token\",function(){\r\n    const res=pm.response.json();\r\n    pm.expect(res).to.have.property(\"token\");\r\n})\r\n\r\nconst res = pm.response.json();\r\n\r\npm.environment.set(\"token\", res.token);\r\n\r\npm.test(\"Response contains success message\", function () {\r\n    const res = pm.response.json();\r\n    pm.expect(res).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response time is acceptable\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(10000);\r\n});\r\n\r\npm.test(\"Response is JSON\", function () {\r\n    pm.expect(pm.response.headers.get(\"Content-Type\"))\r\n        .to.include(\"application/json\");\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"User@123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid Email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Correct invalid email message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"User not found\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user78@example.com\",\n  \"password\": \"User@123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid Password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Correct invalid email message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Incorrect password\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"User@1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Missing Fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Correct invalid email message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Request body is missing. Please send user details.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Book API Testing",
+      "item": [
+        {
+          "name": "Get All Books",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\",function(){\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"All books retrieved.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Book By ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\",function(){\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book retrieved successfully.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{bookId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid book ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Invalid book ID format.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f756de8040206ac245"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Book doesnt exist",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\",function(){\r\n    pm.response.to.have.status(404);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book not found.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f756de8040206ac2452f1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Book",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\",function(){\r\n    pm.response.to.have.status(201);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book added successfully.\"\r\n    );\r\n});\r\n\r\npm.test(\"Check for book ID\",function(){\r\n    const res=pm.response.json();\r\n    pm.expect(res.data._id).to.not.be.null;\r\n})\r\n\r\nconst res = pm.response.json();\r\n\r\npm.environment.set(\"bookId\", res.data._id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "tenail",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Book already exists",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 409\",function(){\r\n    pm.response.to.have.status(409);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book already exists.\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abcyuh",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Token Missing",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\",function(){\r\n    pm.response.to.have.status(401);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Unauthorized\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abcyuhkju",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Missing fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Request body is missing. Please send user details.\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abcyuh",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ],
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Book Title",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Correct title error message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Title must be at least 3 characters long.\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "a",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "arty",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Book Genre",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Genre title error message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Genre must be at least 3 characters long.\"\r\n    );\r\n});\r\n\r\n\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abfr",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "arty",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "a",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Book Price",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Price field error message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Price must be a number greater than 0.\"\r\n    );\r\n});\r\n\r\n\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abfr",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "arty",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "-6",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Book Instock",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Instock field error message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"inStock should be either true or false.\"\r\n    );\r\n});\r\n\r\n\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abfr",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "arty",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "0",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Book Image",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Image field error message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Please upload an image.\"\r\n    );\r\n});\r\n\r\n\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abfr",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "arty",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ],
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Book Author",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Token is valid\",function(){\r\n    const res= pm.response.json();\r\n    pm.expect(res.token).to.not.be.null;\r\n})\r\n\r\npm.test(\"Correct author error message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Author must be at least 3 characters long.\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "abfr",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "a",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid book ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Invalid book ID format.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fdf-805e-4cb0-9105-cb9eee066097"
+                  ]
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "instock",
+                  "value": "true",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f756de8040206ac245"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Book",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\",function(){\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book updated successfully.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fdf-805e-4cb0-9105-cb9eee066097"
+                  ]
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "abcijujhyjfk",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "45",
+                  "type": "text"
+                },
+                {
+                  "key": "instock",
+                  "value": "true",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{bookId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Token Invalid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\",function(){\r\n    pm.response.to.have.status(401);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Unauthorized\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fdf-805e-4cb0-9105-cb9eee066097"
+                  ]
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "abciju",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "instock",
+                  "value": "true",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "68a19e867694cc549f4121c4"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Book doesnt exists",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\",function(){\r\n    pm.response.to.have.status(404);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book not found.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fdf-805e-4cb0-9105-cb9eee066097"
+                  ]
+                },
+                {
+                  "key": "author",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "genre",
+                  "value": "abc",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "98",
+                  "type": "text"
+                },
+                {
+                  "key": "instock",
+                  "value": "true",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f756de8040206ac2452f6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Missing fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\",function(){\r\n    pm.response.to.have.status(400);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Request body is missing. Please send user details.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f079fdf-805e-4cb0-9105-cb9eee066097"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f756de8040206ac247"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Book",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\",function(){\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book deleted successfully.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{bookId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Token Missing",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\",function(){\r\n    pm.response.to.have.status(401);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Unauthorized\"\r\n    );\r\n});\r\n\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f756de8040206ac2452f8"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Book not found",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\",function(){\r\n    pm.response.to.have.status(404);\r\n})\r\n\r\npm.test(\"Correct valid success  message\", function () {\r\n    const res = pm.response.json();\r\n\r\n    pm.expect(res.message).to.eql(\r\n        \"Book not found.\"\r\n    );\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/books/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "books",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "689f70d2a81d672ae339deca"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Register",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "user10",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "user100@example.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "User10@123",
+              "type": "text"
+            },
+            {
+              "key": "profileImage",
+              "type": "file",
+              "src": [
+                "postman-cloud:///1f1b66e1-0144-4e20-b587-e91039ce92e1"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/api/users/register",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "User Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"User@123\"\n}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/users/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/books",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Book By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/books/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "books",
+            ":id"
+          ],
+          "variable": [
+            {
+              "id": 0,
+              "key": "id",
+              "value": "689f756de8040206ac2452f8"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Book",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWY0ZjVhOTRmOWM0Y2IxNjIwMTBlMiIsImlhdCI6MTc1NTI3OTM3NywiZXhwIjoxNzU1MjgyOTc3fQ.nBM6-zdq5de-5cuQt3vTa9V2JtYMRMsLIYlx_hb9t6s",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "abc",
+              "type": "text",
+              "uuid": "b8d0c3c2-6762-4814-930e-2922986eac69"
+            },
+            {
+              "key": "author",
+              "value": "abc",
+              "type": "text",
+              "uuid": "bc36eff3-9dba-4042-ba9c-ec08ccaceb1f"
+            },
+            {
+              "key": "genre",
+              "value": "abc",
+              "type": "text",
+              "uuid": "ef37bae1-159f-45f9-9337-3606715b25df"
+            },
+            {
+              "key": "price",
+              "value": "98",
+              "type": "text",
+              "uuid": "d2f35fae-669b-4e39-9cd8-282ca69fd01f"
+            },
+            {
+              "key": "inStock",
+              "value": "true",
+              "type": "text",
+              "uuid": "a85099ea-0034-422d-bd11-6da2a322501f"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "0d65f578-46c6-4fe8-b7f7-9cbd16437357",
+              "src": "postman-cloud:///1f079fea-5d9e-44e0-9e55-e5fa4c4e757e"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/api/books",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Book",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": "postman-cloud:///1f079fdf-805e-4cb0-9105-cb9eee066097",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/api/books/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "books",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{bookId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Book",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWY0ZjVhOTRmOWM0Y2IxNjIwMTBlMiIsImlhdCI6MTc1NTI3OTM3NywiZXhwIjoxNzU1MjgyOTc3fQ.nBM6-zdq5de-5cuQt3vTa9V2JtYMRMsLIYlx_hb9t6s",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/books/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "books",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "689f70d2a81d672ae339deca"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000"
+    }
+  ]
+}
